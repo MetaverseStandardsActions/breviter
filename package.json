@@ -1,0 +1,55 @@
+{
+  "name": "breviter",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "init-dev": "next dev",
+    "init-build": "next build",
+    "init-start": "next start",
+    "export": "next export",
+    "dev": "([[ -e 'public/db.json' ]] || yarn compute) && yarn init-dev",
+    "build": "([[ -e 'public/db.json' ]] || yarn compute) && yarn init-build",
+    "start": "([[ -e 'public/db.json' ]] || yarn compute) && yarn init-start",
+    "cli": "ts-node --project tsconfig.bin.json src/cli.ts",
+    "compute": "yarn cli compute data -o public/db.json",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run lint"
+  },
+  "bin": {
+    "breviter": "src/cli.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geolexica/breviter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/geolexica/breviter/issues"
+  },
+  "homepage": "https://github.com/geolexica/breviter/#readme",
+  "dependencies": {
+    "@blueprintjs/core": "^3.54.0",
+    "@blueprintjs/popover2": "^0.14.0",
+    "@tensorflow-models/universal-sentence-encoder": "^1.3.3",
+    "@tensorflow/tfjs": "^3.20.0",
+    "@tensorflow/tfjs-node": "^3.20.0",
+    "js-yaml": "^4.1.0",
+    "next": "12.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "ts-node": "^10.9.1",
+    "yargs": "^17.5.1"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^12.3.1",
+    "@types/node": "^14.18.30",
+    "@types/react": "17.0.50",
+    "@types/yargs": "^17.0.13",
+    "gts": "^3.1.1",
+    "typescript": "4.8.3"
+  }
+}
